@@ -1,0 +1,13 @@
+progress from Scandinavian farmer, to viking oarsman, to captain, to ruler
+
+at the start: "Plow the stony earth". gives food, slowly
+    a few upgrades, then an event happens where someone comes by and suggests going on raids
+
+"Pull the oar". resource is distance to target...when hit target, get resources from raid
+
+
+resources:
+    food
+    gold
+    weapons
+    armor? (how to differentiate from weapons?)
