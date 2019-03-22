@@ -7,7 +7,9 @@
     "jsRules": {},
     "rules": {
         "interface-name": [true, "never-prefix"],
-        "object-literal-sort-keys": false
+        "jsx-no-multiline-js": false,
+        "object-literal-sort-keys": false,
+        "trailing-comma": false
     },
     "rulesDirectory": []
 }
