@@ -6,10 +6,10 @@ import { StatusDescription } from "./StatusDescription";
 
 export const MainPanel: FunctionComponent = () => {
     return (
-        <>
+        <div style={{textAlign: "center"}}>
             <StatusDescription />
             <Actions />
             <ResourceDisplay />
-        </>
+        </div>
     );
 };
