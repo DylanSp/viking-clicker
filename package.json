@@ -12,6 +12,7 @@
     "react-dom": "^16.8.4",
     "react-scripts": "2.1.8",
     "typeface-roboto": "0.0.54",
+    "typeface-uncial-antiqua": "0.0.71",
     "typescript": "3.3.4000"
   },
   "scripts": {
