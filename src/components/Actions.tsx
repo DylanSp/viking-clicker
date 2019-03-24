@@ -9,9 +9,8 @@ export const Actions: FunctionComponent = () => {
     return (
         <Paper
             style={{
-                display: "flex",
                 justifyContent: "center",
-                margin: "0 auto",
+                margin: "auto",
                 width: "fit-content"
             }}
         >

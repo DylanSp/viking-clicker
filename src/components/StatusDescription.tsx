@@ -4,7 +4,7 @@ import { FunctionComponent } from "react";
 
 export const StatusDescription: FunctionComponent = () => {
     return (
-        <Typography variant="h3">
+        <Typography variant="h5">
             You are a peasant, scratching a living from the bleak earth.
         </Typography>
     );

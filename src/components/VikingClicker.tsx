@@ -7,7 +7,7 @@ import { UpgradePanel } from "./UpgradePanel";
 
 export const VikingClicker: FunctionComponent = () => {
     return (
-        <>
+        <div>
             <Grid container={true} spacing={0}>
                 <Grid item={true} xs={3}>
                     <UpgradePanel />
@@ -19,6 +19,6 @@ export const VikingClicker: FunctionComponent = () => {
                     <RaidingPanel />
                 </Grid>
             </Grid>
-        </>
+        </div>
     );
 };
