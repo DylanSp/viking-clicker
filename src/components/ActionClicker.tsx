@@ -6,11 +6,12 @@ import { FunctionComponent } from "react";
 
 export interface ActionClickerProps {
     actionName: string;
+    handleAction: () => void;
 }
 
 export const ActionClicker: FunctionComponent<ActionClickerProps> = (props) => {
     return (
-        <Button variant="contained">
+        <Button variant="contained" onClick={props.handleAction}>
             {props.actionName}
         </Button>
     );
