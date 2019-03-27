@@ -1,10 +1,12 @@
 import produce from "immer";
+import { CrewMembers } from "./CrewMembers";
 import { Resources } from "./Resources";
 import { Servants } from "./Servants";
 
 export interface VikingClickerGame {
     resources: Resources;
     servants: Servants;
+    crewMembers: CrewMembers;
 }
 
 export const initializeGame = (): VikingClickerGame => {
@@ -16,6 +18,9 @@ export const initializeGame = (): VikingClickerGame => {
         },
         servants: {
             farmhands: 0
+        },
+        crewMembers: {
+            raiders: 0
         }
     };
 };
