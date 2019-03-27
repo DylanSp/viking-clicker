@@ -4,8 +4,8 @@ import { Component } from "react";
 import { initializeGame, plow, runTick, VikingClickerGame } from "../game/VikingClickerGame";
 import { MainPanel } from "./MainPanel";
 import { RaidingPanel } from "./RaidingPanel";
+import { ServantsPanel } from "./ServantsPanel";
 import { UpgradePanel } from "./UpgradePanel";
-import { WorkerPanel } from "./WorkerPanel";
 
 const tickLength = 1000;    // length of one game tick in ms
 
@@ -37,7 +37,7 @@ export class VikingClicker extends Component<{}, VikingClickerState> {
                                 <UpgradePanel />
                             </Grid>
                             <Grid item={true} xs={6}>
-                                <WorkerPanel />
+                                <ServantsPanel />
                             </Grid>
                         </>
                     </Grid>

@@ -1,10 +1,10 @@
 import produce from "immer";
 import { Resources } from "./Resources";
-import { Workers } from "./Workers";
+import { Servants } from "./Servants";
 
 export interface VikingClickerGame {
     resources: Resources;
-    workers: Workers;
+    servants: Servants;
 }
 
 export const initializeGame = (): VikingClickerGame => {
@@ -14,7 +14,7 @@ export const initializeGame = (): VikingClickerGame => {
             wood: 0,
             gold: 0
         },
-        workers: {
+        servants: {
             farmhands: 0
         }
     };
@@ -28,6 +28,6 @@ export const plow = (game: VikingClickerGame): VikingClickerGame => {
 
 export const runTick = (game: VikingClickerGame): VikingClickerGame => {
     return produce(game, (draft) => {
-        draft.resources.food += draft.workers.farmhands;    // TODO - add multiplier
+        draft.resources.food += draft.servants.farmhands;    // TODO - add multiplier
     });
 };
