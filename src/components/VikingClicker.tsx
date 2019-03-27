@@ -2,6 +2,7 @@ import Grid from "@material-ui/core/Grid";
 import * as React from "react";
 import { Component } from "react";
 import { initializeGame, plow, runTick, VikingClickerGame } from "../game/VikingClickerGame";
+import { CrewPanel } from "./CrewPanel";
 import { MainPanel } from "./MainPanel";
 import { RaidingPanel } from "./RaidingPanel";
 import { ServantsPanel } from "./ServantsPanel";
@@ -32,21 +33,19 @@ export class VikingClicker extends Component<{}, VikingClickerState> {
             <>
                 <Grid container={true} spacing={0}>
                     <Grid item={true} container={true} direction="column" xs={3} style={{borderRight: "1px solid black"}}>
-                        <>
-                            <Grid
-                                item={true}
-                                xs={6}
-                                style={{
-                                    borderBottom: "1px solid black",
-                                    maxWidth: "100%"
-                                }}
-                            >
-                                <UpgradePanel />
-                            </Grid>
-                            <Grid item={true} xs={6} style={{maxWidth: "100%"}}>
-                                <ServantsPanel />
-                            </Grid>
-                        </>
+                        <Grid
+                            item={true}
+                            xs={6}
+                            style={{
+                                borderBottom: "1px solid black",
+                                maxWidth: "100%"
+                            }}
+                        >
+                            <UpgradePanel />
+                        </Grid>
+                        <Grid item={true} xs={6} style={{maxWidth: "100%"}}>
+                            <ServantsPanel />
+                        </Grid>
                     </Grid>
                     <Grid item={true} xs={6}>
                         <MainPanel
@@ -54,8 +53,20 @@ export class VikingClicker extends Component<{}, VikingClickerState> {
                             resources={this.state.game.resources}
                         />
                     </Grid>
-                    <Grid item={true} xs={3} style={{borderLeft: "1px solid black"}}>
-                        <RaidingPanel />
+                    <Grid item={true} container={true} direction="column" xs={3} style={{borderLeft: "1px solid black"}}>
+                        <Grid
+                            item={true}
+                            xs={6}
+                            style={{
+                                borderBottom: "1px solid black",
+                                maxWidth: "100%"
+                            }}
+                        >
+                            <RaidingPanel />
+                        </Grid>
+                        <Grid item={true} xs={6} style={{maxWidth: "100%"}}>
+                            <CrewPanel />
+                        </Grid>
                     </Grid>
                 </Grid>
             </>
