@@ -5,6 +5,7 @@ import { initializeGame, plow, VikingClickerGame } from "../VikingClickerGame";
 import { MainPanel } from "./MainPanel";
 import { RaidingPanel } from "./RaidingPanel";
 import { UpgradePanel } from "./UpgradePanel";
+import { WorkerPanel } from "./WorkerPanel";
 
 interface VikingClickerState {
     game: VikingClickerGame;
@@ -20,10 +21,17 @@ export class VikingClicker extends Component<{}, VikingClickerState> {
 
     public render = () => {
         return (
-            <div>
+            <>
                 <Grid container={true} spacing={0}>
-                    <Grid item={true} xs={3}>
-                        <UpgradePanel />
+                    <Grid item={true} container={true} direction="column" xs={3}>
+                        <>
+                            <Grid item={true} xs={6}>
+                                <UpgradePanel />
+                            </Grid>
+                            <Grid item={true} xs={6}>
+                                <WorkerPanel />
+                            </Grid>
+                        </>
                     </Grid>
                     <Grid item={true} xs={6}>
                         <MainPanel
@@ -35,7 +43,7 @@ export class VikingClicker extends Component<{}, VikingClickerState> {
                         <RaidingPanel />
                     </Grid>
                 </Grid>
-            </div>
+            </>
         );
     }
 
