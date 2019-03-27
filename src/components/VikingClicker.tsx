@@ -31,12 +31,19 @@ export class VikingClicker extends Component<{}, VikingClickerState> {
         return (
             <>
                 <Grid container={true} spacing={0}>
-                    <Grid item={true} container={true} direction="column" xs={3}>
+                    <Grid item={true} container={true} direction="column" xs={3} style={{borderRight: "1px solid black"}}>
                         <>
-                            <Grid item={true} xs={6}>
+                            <Grid
+                                item={true}
+                                xs={6}
+                                style={{
+                                    borderBottom: "1px solid black",
+                                    maxWidth: "100%"
+                                }}
+                            >
                                 <UpgradePanel />
                             </Grid>
-                            <Grid item={true} xs={6}>
+                            <Grid item={true} xs={6} style={{maxWidth: "100%"}}>
                                 <ServantsPanel />
                             </Grid>
                         </>
@@ -47,7 +54,7 @@ export class VikingClicker extends Component<{}, VikingClickerState> {
                             resources={this.state.game.resources}
                         />
                     </Grid>
-                    <Grid item={true} xs={3}>
+                    <Grid item={true} xs={3} style={{borderLeft: "1px solid black"}}>
                         <RaidingPanel />
                     </Grid>
                 </Grid>
