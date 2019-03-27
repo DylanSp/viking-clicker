@@ -31,7 +31,7 @@ export class VikingClicker extends Component<{}, VikingClickerState> {
     public render = () => {
         return (
             <>
-                <Grid container={true} spacing={0}>
+                <Grid container={true} spacing={0} style={{height: "100vh"}}>
                     <Grid item={true} container={true} direction="column" xs={3} style={{borderRight: "1px solid black"}}>
                         <Grid
                             item={true}
