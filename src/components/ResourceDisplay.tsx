@@ -3,7 +3,7 @@ import ListItem from "@material-ui/core/ListItem";
 import Typography from "@material-ui/core/Typography";
 import * as React from "react";
 import { FunctionComponent } from "react";
-import { Resources } from "../Resources";
+import { Resources } from "../game/Resources";
 
 export interface ResourceDisplayProps {
     resources: Resources;

@@ -1,11 +1,13 @@
 import Grid from "@material-ui/core/Grid";
 import * as React from "react";
 import { Component } from "react";
-import { initializeGame, plow, VikingClickerGame } from "../VikingClickerGame";
+import { initializeGame, plow, runTick, VikingClickerGame } from "../game/VikingClickerGame";
 import { MainPanel } from "./MainPanel";
 import { RaidingPanel } from "./RaidingPanel";
 import { UpgradePanel } from "./UpgradePanel";
 import { WorkerPanel } from "./WorkerPanel";
+
+const tickLength = 1000;    // length of one game tick in ms
 
 interface VikingClickerState {
     game: VikingClickerGame;
@@ -17,6 +19,12 @@ export class VikingClicker extends Component<{}, VikingClickerState> {
         this.state = {
             game: initializeGame()
         };
+
+        setInterval(() => {
+            this.setState({
+                game: runTick(this.state.game)
+            });
+        }, tickLength);
     }
 
     public render = () => {

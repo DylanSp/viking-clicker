@@ -1,7 +1,7 @@
 import Typography from "@material-ui/core/Typography";
 import * as React from "react";
 import { FunctionComponent } from "react";
-import { Resources } from "../Resources";
+import { Resources } from "../game/Resources";
 import { Actions } from "./Actions";
 import { ResourceDisplay } from "./ResourceDisplay";
 import { StatusDescription } from "./StatusDescription";
