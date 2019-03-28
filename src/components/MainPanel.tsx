@@ -14,8 +14,8 @@ export interface MainPanelProps {
 
 export const MainPanel: FunctionComponent<MainPanelProps> = (props) => {
     return (
-        <Grid container={true} direction="column">
-            <Grid item={true} xs={1}>
+        <Grid container={true} direction="column" alignItems="center">
+            <Grid item={true} xs={12}>
                 <Typography variant="h3" gutterBottom={true}>
                     Viking Clicker
                 </Typography>

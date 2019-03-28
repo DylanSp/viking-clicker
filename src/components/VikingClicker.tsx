@@ -2,11 +2,9 @@ import Grid from "@material-ui/core/Grid";
 import * as React from "react";
 import { Component } from "react";
 import { initializeGame, plow, runTick, VikingClickerGame } from "../game/VikingClickerGame";
-import { CrewPanel } from "./CrewPanel";
+import { LeftPanel } from "./LeftPanel";
 import { MainPanel } from "./MainPanel";
-import { RaidingPanel } from "./RaidingPanel";
-import { ServantsPanel } from "./ServantsPanel";
-import { UpgradePanel } from "./UpgradePanel";
+import { RightPanel } from "./RightPanel";
 
 const tickLength = 1000;    // length of one game tick in ms
 
@@ -31,21 +29,9 @@ export class VikingClicker extends Component<{}, VikingClickerState> {
     public render = () => {
         return (
             <>
-                <Grid container={true} spacing={0} style={{height: "100vh"}}>
-                    <Grid item={true} container={true} direction="column" xs={3} style={{borderRight: "1px solid black"}}>
-                        <Grid
-                            item={true}
-                            xs={6}
-                            style={{
-                                borderBottom: "1px solid black",
-                                maxWidth: "100%"
-                            }}
-                        >
-                            <UpgradePanel />
-                        </Grid>
-                        <Grid item={true} xs={6} style={{maxWidth: "100%"}}>
-                            <ServantsPanel />
-                        </Grid>
+                <Grid container={true} spacing={0}>
+                    <Grid item={true} xs={3}>
+                        <LeftPanel />
                     </Grid>
                     <Grid item={true} xs={6}>
                         <MainPanel
@@ -53,20 +39,8 @@ export class VikingClicker extends Component<{}, VikingClickerState> {
                             resources={this.state.game.resources}
                         />
                     </Grid>
-                    <Grid item={true} container={true} direction="column" xs={3} style={{borderLeft: "1px solid black"}}>
-                        <Grid
-                            item={true}
-                            xs={6}
-                            style={{
-                                borderBottom: "1px solid black",
-                                maxWidth: "100%"
-                            }}
-                        >
-                            <RaidingPanel />
-                        </Grid>
-                        <Grid item={true} xs={6} style={{maxWidth: "100%"}}>
-                            <CrewPanel />
-                        </Grid>
+                    <Grid item={true} xs={3}>
+                        <RightPanel />
                     </Grid>
                 </Grid>
             </>
