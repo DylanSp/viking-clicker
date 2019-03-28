@@ -1,10 +1,16 @@
 import Grid from "@material-ui/core/Grid";
 import * as React from "react";
 import { FunctionComponent } from "react";
+import { FoodUpgrade } from "../game/FoodUpgrades";
 import { ServantsPanel } from "./ServantsPanel";
 import { UpgradePanel } from "./UpgradePanel";
 
-export const LeftPanel: FunctionComponent = () => {
+export interface LeftPanelProps {
+    purchasedFoodUpgrades: FoodUpgrade[];
+    purchaseFoodUpgrade: (upgrade: FoodUpgrade) => void;
+}
+
+export const LeftPanel: FunctionComponent<LeftPanelProps> = (props) => {
     return (
         <Grid
             container={true}
@@ -22,7 +28,7 @@ export const LeftPanel: FunctionComponent = () => {
                     maxWidth: "100%"
                 }}
             >
-                <UpgradePanel />
+                <UpgradePanel {...props} />
             </Grid>
             <Grid item={true} xs={6} style={{ maxWidth: "100%" }}>
                 <ServantsPanel />

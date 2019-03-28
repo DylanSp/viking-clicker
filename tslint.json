@@ -8,6 +8,7 @@
     "rules": {
         "forin": false,
         "interface-name": [true, "never-prefix"],
+        "jsx-no-lambda": false,
         "jsx-no-multiline-js": false,
         "max-line-length": false,
         "object-literal-sort-keys": false,
