@@ -14,30 +14,8 @@ export interface MainPanelProps {
 
 export const MainPanel: FunctionComponent<MainPanelProps> = (props) => {
     return (
-        <Grid container={true} direction="column" alignItems="center">
-            <Grid item={true} xs={12}>
-                <Typography variant="h3" gutterBottom={true}>
-                    Viking Clicker
-                </Typography>
-            </Grid>
-            <Grid item={true} xs={2}>
-                <StatusDescription />
-            </Grid>
-            <Grid item={true} xs={6}>
-                <Actions handlePlow={props.handlePlow} />
-            </Grid>
-            <Grid item={true} xs={3}>
-                <ResourceDisplay resources={props.resources} />
-            </Grid>
-        </Grid>
-    );
-
-    /*
-    return (
         <div
             style={{
-                display: "flex",
-                flexDirection: "column",
                 textAlign: "center",
                 height: "100vh"
             }}
@@ -50,5 +28,4 @@ export const MainPanel: FunctionComponent<MainPanelProps> = (props) => {
             <ResourceDisplay resources={props.resources} />
         </div>
     );
-    */
 };
