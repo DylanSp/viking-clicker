@@ -9,6 +9,7 @@ import { StatusDescription } from "./StatusDescription";
 
 export interface MainPanelProps {
     handlePlow: () => void;
+    handleChop: () => void;
     resources: Resources;
 }
 
@@ -24,7 +25,7 @@ export const MainPanel: FunctionComponent<MainPanelProps> = (props) => {
                 Viking Clicker
             </Typography>
             <StatusDescription />
-            <Actions handlePlow={props.handlePlow} />
+            <Actions handlePlow={props.handlePlow} handleChop={props.handleChop} />
             <ResourceDisplay resources={props.resources} />
         </div>
     );

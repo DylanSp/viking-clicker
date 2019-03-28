@@ -7,6 +7,7 @@ import { ActionClicker } from "./ActionClicker";
 
 export interface ActionsProps {
     handlePlow: () => void;
+    handleChop: () => void;
 }
 
 export const Actions: FunctionComponent<ActionsProps> = (props) => {
@@ -20,7 +21,10 @@ export const Actions: FunctionComponent<ActionsProps> = (props) => {
         >
             <List>
                 <ListItem>
-                    <ActionClicker actionName="plow" handleAction={props.handlePlow} />
+                    <ActionClicker actionName="Plow Field" handleAction={props.handlePlow} />
+                </ListItem>
+                <ListItem>
+                    <ActionClicker actionName="Chop Wood" handleAction={props.handleChop} />
                 </ListItem>
             </List>
         </Paper>

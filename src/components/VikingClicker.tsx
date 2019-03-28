@@ -1,7 +1,7 @@
 import Grid from "@material-ui/core/Grid";
 import * as React from "react";
 import { Component } from "react";
-import { initializeGame, plow, runTick, VikingClickerGame } from "../game/VikingClickerGame";
+import { chop, initializeGame, plow, runTick, VikingClickerGame } from "../game/VikingClickerGame";
 import { LeftPanel } from "./LeftPanel";
 import { MainPanel } from "./MainPanel";
 import { RightPanel } from "./RightPanel";
@@ -36,6 +36,7 @@ export class VikingClicker extends Component<{}, VikingClickerState> {
                     <Grid item={true} xs={6}>
                         <MainPanel
                             handlePlow={this.handlePlow}
+                            handleChop={this.handleChop}
                             resources={this.state.game.resources}
                         />
                     </Grid>
@@ -50,6 +51,12 @@ export class VikingClicker extends Component<{}, VikingClickerState> {
     private handlePlow = () => {
         this.setState({
             game: plow(this.state.game)
+        });
+    }
+
+    private handleChop = () => {
+        this.setState({
+            game: chop(this.state.game)
         });
     }
 }

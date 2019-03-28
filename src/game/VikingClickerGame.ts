@@ -31,6 +31,12 @@ export const plow = (game: VikingClickerGame): VikingClickerGame => {
     });
 };
 
+export const chop = (game: VikingClickerGame): VikingClickerGame => {
+    return produce(game, (draft) => {
+        draft.resources.wood += 1;
+    });
+};
+
 export const runTick = (game: VikingClickerGame): VikingClickerGame => {
     return produce(game, (draft) => {
         draft.resources.food += draft.servants.farmhands;    // TODO - add multiplier
