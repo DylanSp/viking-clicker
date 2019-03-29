@@ -62,8 +62,11 @@ export class VikingClicker extends Component<{}, VikingClickerState> {
     }
 
     private purchaseFoodUpgrade = (upgrade: FoodUpgrade) => {
-        this.setState({
-            game: purchaseFoodUpgrade(upgrade, this.state.game)
-        });
+        const [wasSuccessful, newGame] = purchaseFoodUpgrade(upgrade, this.state.game);
+        if (wasSuccessful) {
+            this.setState({
+                game: newGame
+            });
+        }
     }
 }

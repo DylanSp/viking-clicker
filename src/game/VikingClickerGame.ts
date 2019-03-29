@@ -19,7 +19,7 @@ export const initializeGame = (): VikingClickerGame => {
             gold: 0
         },
         servants: {
-            farmhands: 1
+            farmhands: 0
         },
         crewMembers: {
             raiders: 0
@@ -52,12 +52,19 @@ export const runTick = (game: VikingClickerGame): VikingClickerGame => {
     });
 };
 
-export const purchaseFoodUpgrade = (upgrade: FoodUpgrade, game: VikingClickerGame): VikingClickerGame => {
-    return produce(game, (draft) => {
-        draft.resources.food -= upgrade.cost.food;
-        draft.resources.wood -= upgrade.cost.wood;
-        draft.resources.gold -= upgrade.cost.gold;
+export const purchaseFoodUpgrade = (upgrade: FoodUpgrade, game: VikingClickerGame): [boolean, VikingClickerGame] => {
+    if (game.resources.food >= upgrade.cost.food
+     && game.resources.wood >= upgrade.cost.wood
+     && game.resources.gold >= upgrade.cost.gold) {
+        return [true, produce(game, (draft) => {
+            draft.resources.food -= upgrade.cost.food;
+            draft.resources.wood -= upgrade.cost.wood;
+            draft.resources.gold -= upgrade.cost.gold;
 
-        draft.foodUpgradesPurchased.push(upgrade);
-    });
+            draft.foodUpgradesPurchased.push(upgrade);
+        })];
+     }
+
+    // intentional no-op in produce(), just create a copy of the game with no changes
+    return [false, produce(game, (draft) => { return; })];
 };
