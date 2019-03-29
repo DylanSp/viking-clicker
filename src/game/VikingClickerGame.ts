@@ -68,3 +68,24 @@ export const purchaseFoodUpgrade = (upgrade: FoodUpgrade, game: VikingClickerGam
     // intentional no-op in produce(), just create a copy of the game with no changes
     return [false, produce(game, (draft) => { return; })];
 };
+
+export const hireServant = (game: VikingClickerGame): [boolean, VikingClickerGame] => {
+    const cost = getServantCost(game);
+    if (game.resources.food >= cost) {
+        return [true, produce(game, (draft) => {
+            game.resources.food -= cost;
+            draft.servants.farmhands += 1;
+        })];
+    }
+
+    // intentional no-op in produce(), just create a copy of the game with no changes
+    return [false, produce(game, (draft) => { return; })];
+};
+
+export const getServantCost = (game: VikingClickerGame): number => {
+    const baseCost = 500;   // amount of food required
+                            // TODO - move this to file of important constants?
+    const baseMultiplier = 1.15;
+    const numServants = game.servants.farmhands;
+    return baseCost * (baseMultiplier ** numServants);
+};

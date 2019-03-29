@@ -48,15 +48,15 @@ const displayCost = (upgrade: FoodUpgrade): string => {
     const costText: string[] = [];
 
     if (upgrade.cost.food > 0) {
-        costText.push(`${upgrade.cost.food} food`);
+        costText.push(`${upgrade.cost.food} Food`);
     }
 
     if (upgrade.cost.wood > 0) {
-        costText.push(`${upgrade.cost.wood} wood`);
+        costText.push(`${upgrade.cost.wood} Wood`);
     }
 
     if (upgrade.cost.gold > 0) {
-        costText.push(`${upgrade.cost.gold} gold`);
+        costText.push(`${upgrade.cost.gold} Gold`);
     }
 
     return costText.join(", ");

@@ -9,6 +9,7 @@ export interface ResourceDisplayProps {
     resources: Resources;
 }
 
+// TODO - revisit when to display different resources (start displaying food, wood, even if they're 0? add gold later?)
 export const ResourceDisplay: FunctionComponent<ResourceDisplayProps> = (props) => {
     return (
         <>
