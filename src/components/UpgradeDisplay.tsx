@@ -17,8 +17,8 @@ export const UpgradeDisplay: FunctionComponent<UpgradeDisplayProps> = (props) =>
 
     return (
         <List>
-            {availableUpgrades.map((upgrade) => (
-                <ListItem style={{borderBottom: "1px solid gray"}}>
+            {availableUpgrades.map((upgrade, index) => (
+                <ListItem style={{borderBottom: "1px solid gray"}} key={index}>
                     <Tooltip title={upgrade.description} placement="right">
                         <Button
                             variant="outlined"

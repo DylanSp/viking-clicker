@@ -12,10 +12,11 @@ export interface ActionsProps {
 
 export const Actions: FunctionComponent<ActionsProps> = (props) => {
     return (
-        <Paper
+        <div
             style={{
                 justifyContent: "center",
                 margin: "auto",
+                padding: "12.5vh 0",
                 width: "fit-content"
             }}
         >
@@ -27,6 +28,6 @@ export const Actions: FunctionComponent<ActionsProps> = (props) => {
                     <ActionClicker actionName="Chop Wood" handleAction={props.handleChop} />
                 </ListItem>
             </List>
-        </Paper>
+        </div>
     );
 };
