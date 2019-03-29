@@ -4,6 +4,11 @@ import { VikingClicker } from "./components/VikingClicker";
 
 const theme = createMuiTheme({
     overrides: {
+        MuiTooltip: {
+            tooltip: {
+                fontSize: "0.8em"
+            }
+        },
         MuiTypography: {
             h3: {
                 fontFamily: "'Uncial Antiqua', cursive"

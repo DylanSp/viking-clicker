@@ -1,6 +1,7 @@
 import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
+import Tooltip from "@material-ui/core/Tooltip";
 import * as React from "react";
 import { FunctionComponent } from "react";
 import { FoodUpgrade, foodUpgrades } from "../game/FoodUpgrades";
@@ -17,13 +18,15 @@ export const UpgradeDisplay: FunctionComponent<UpgradeDisplayProps> = (props) =>
         <List>
             {availableUpgrades.map((upgrade) => (
                 <ListItem>
-                    <Button
-                        variant="outlined"
-                        onClick={() => props.purchaseFoodUpgrade(upgrade)}
-                        disabled={props.purchasedFoodUpgrades.includes(upgrade)}
-                    >
-                        {upgrade.name}
-                    </Button>
+                    <Tooltip title={upgrade.description} placement="right">
+                        <Button
+                            variant="outlined"
+                            onClick={() => props.purchaseFoodUpgrade(upgrade)}
+                            disabled={props.purchasedFoodUpgrades.includes(upgrade)}
+                        >
+                            {upgrade.name}
+                        </Button>
+                    </Tooltip>
                 </ListItem>
             ))}
         </List>
