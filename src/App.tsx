@@ -17,6 +17,9 @@ const theme = createMuiTheme({
                 fontFamily: "'Uncial Antiqua', cursive"
             }
         }
+    },
+    typography: {
+        useNextVariants: true
     }
 });
 
