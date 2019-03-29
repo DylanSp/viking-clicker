@@ -11,9 +11,11 @@ export interface UpgradeDisplayProps {
 }
 
 export const UpgradeDisplay: FunctionComponent<UpgradeDisplayProps> = (props) => {
+    const availableUpgrades = foodUpgrades.filter((upgrade) => !props.purchasedFoodUpgrades.includes(upgrade));
+
     return (
         <List>
-            {foodUpgrades.map((upgrade) => (
+            {availableUpgrades.map((upgrade) => (
                 <ListItem>
                     <Button
                         variant="outlined"
