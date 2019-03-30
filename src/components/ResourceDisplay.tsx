@@ -3,25 +3,25 @@ import ListItem from "@material-ui/core/ListItem";
 import Typography from "@material-ui/core/Typography";
 import * as React from "react";
 import { FunctionComponent } from "react";
-import { Resources } from "../game/Resources";
-
-export interface ResourceDisplayProps {
-    resources: Resources;
-}
+import { VikingClickerContextConsumer } from "./VikingClicker";
 
 // TODO - revisit when to display different resources (start displaying food, wood, even if they're 0? add gold later?)
-export const ResourceDisplay: FunctionComponent<ResourceDisplayProps> = (props) => {
+export const ResourceDisplay: FunctionComponent = () => {
     return (
-        <>
-            <Typography variant="h5">
-                Resources:
-            </Typography>
-            <List>
-                {displayFood(props.resources.food)}
-                {displayWood(props.resources.wood)}
-                {displayGold(props.resources.gold)}
-            </List>
-        </>
+        <VikingClickerContextConsumer>
+            {(context) =>
+                <>
+                    <Typography variant="h5">
+                        Resources:
+                    </Typography>
+                    <List>
+                        {displayFood(context.resources.food)}
+                        {displayWood(context.resources.wood)}
+                        {displayGold(context.resources.gold)}
+                    </List>
+                </>
+            }
+        </VikingClickerContextConsumer>
     );
 };
 

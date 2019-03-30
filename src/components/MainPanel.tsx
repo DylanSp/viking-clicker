@@ -1,19 +1,12 @@
 import Typography from "@material-ui/core/Typography";
 import * as React from "react";
 import { FunctionComponent } from "react";
-import { Resources } from "../game/Resources";
 import { Actions } from "./Actions";
 import { MessageDisplay } from "./MessageDisplay";
 import { ResourceDisplay } from "./ResourceDisplay";
 import { StatusDescription } from "./StatusDescription";
 
-export interface MainPanelProps {
-    handlePlow: () => void;
-    handleChop: () => void;
-    resources: Resources;
-}
-
-export const MainPanel: FunctionComponent<MainPanelProps> = (props) => {
+export const MainPanel: FunctionComponent = () => {
     return (
         <div
             style={{
@@ -25,8 +18,8 @@ export const MainPanel: FunctionComponent<MainPanelProps> = (props) => {
                 Viking Clicker
             </Typography>
             <StatusDescription />
-            <Actions handlePlow={props.handlePlow} handleChop={props.handleChop} />
-            <ResourceDisplay resources={props.resources} />
+            <Actions />
+            <ResourceDisplay />
             <MessageDisplay />
         </div>
     );

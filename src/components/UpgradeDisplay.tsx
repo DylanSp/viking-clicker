@@ -6,41 +6,44 @@ import Typography from "@material-ui/core/Typography";
 import * as React from "react";
 import { FunctionComponent } from "react";
 import { FoodUpgrade, foodUpgrades } from "../game/FoodUpgrades";
+import { VikingClickerContextConsumer } from "./VikingClicker";
 
-export interface UpgradeDisplayProps {
-    purchasedFoodUpgrades: FoodUpgrade[];
-    purchaseFoodUpgrade: (upgrade: FoodUpgrade) => void;
-}
-
-export const UpgradeDisplay: FunctionComponent<UpgradeDisplayProps> = (props) => {
-    const availableUpgrades = foodUpgrades.filter((upgrade) => !props.purchasedFoodUpgrades.includes(upgrade));
+export const UpgradeDisplay: FunctionComponent = () => {
 
     return (
-        <List>
-            {availableUpgrades.map((upgrade, index) => (
-                <ListItem style={{borderBottom: "1px solid gray"}} key={index}>
-                    <Tooltip title={upgrade.description} placement="right">
-                        <Button
-                            variant="outlined"
-                            onClick={() => props.purchaseFoodUpgrade(upgrade)}
-                            disabled={props.purchasedFoodUpgrades.includes(upgrade)}
-                            style={{
-                                whiteSpace: "nowrap",
-                                paddingLeft: "1.5rem",
-                                paddingRight: "1.5rem"
-                            }}
-                        >
-                            {upgrade.name}
-                        </Button>
-                    </Tooltip>
-                    <div style={{width: "inherit", textAlign: "right"}}>
-                        <Typography>
-                            {displayCost(upgrade)}
-                        </Typography>
-                    </div>
-                </ListItem>
-            ))}
-        </List>
+        <VikingClickerContextConsumer>
+            {(context) => {
+                const availableUpgrades = foodUpgrades.filter((upgrade) => !context.purchasedFoodUpgrades.includes(upgrade));
+
+                return (
+                    <List>
+                        {availableUpgrades.map((upgrade, index) => (
+                            <ListItem style={{borderBottom: "1px solid gray"}} key={index}>
+                                <Tooltip title={upgrade.description} placement="right">
+                                    <Button
+                                        variant="outlined"
+                                        onClick={() => context.purchaseFoodUpgrade(upgrade)}
+                                        disabled={context.purchasedFoodUpgrades.includes(upgrade)}
+                                        style={{
+                                            whiteSpace: "nowrap",
+                                            paddingLeft: "1.5rem",
+                                            paddingRight: "1.5rem"
+                                        }}
+                                    >
+                                        {upgrade.name}
+                                    </Button>
+                                </Tooltip>
+                                <div style={{width: "inherit", textAlign: "right"}}>
+                                    <Typography>
+                                        {displayCost(upgrade)}
+                                    </Typography>
+                                </div>
+                            </ListItem>
+                        ))}
+                    </List>
+                );
+            }}
+        </VikingClickerContextConsumer>
     );
 };
 
