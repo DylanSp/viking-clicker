@@ -18,6 +18,7 @@ export interface VikingClickerContext {
     servants: Servants;
     servantCost: number;
     hireServant: () => void;
+    messages: string[];
 }
 
 const { Provider, Consumer } = React.createContext<VikingClickerContext>({
@@ -34,7 +35,8 @@ const { Provider, Consumer } = React.createContext<VikingClickerContext>({
         farmhands: 0
     },
     servantCost: 0,
-    hireServant: () => { return; }
+    hireServant: () => { return; },
+    messages: []
 });
 
 export const VikingClickerContextProvider = Provider;
@@ -44,13 +46,15 @@ const tickLength = 1000;    // length of one game tick in ms
 
 interface VikingClickerState {
     game: VikingClickerGame;
+    messages: string[];
 }
 
 export class VikingClicker extends Component<{}, VikingClickerState> {
     public constructor(props: {}) {
         super(props);
         this.state = {
-            game: initializeGame()
+            game: initializeGame(),
+            messages: []
         };
 
         setInterval(() => {
@@ -71,7 +75,8 @@ export class VikingClicker extends Component<{}, VikingClickerState> {
                     purchaseFoodUpgrade: this.purchaseFoodUpgrade,
                     servants: this.state.game.servants,
                     servantCost: getServantCost(this.state.game),
-                    hireServant: this.hireServant
+                    hireServant: this.hireServant,
+                    messages: this.state.messages
                 }}
             >
                 <Grid container={true} spacing={0}>
@@ -105,7 +110,8 @@ export class VikingClicker extends Component<{}, VikingClickerState> {
         const [wasSuccessful, newGame] = purchaseFoodUpgrade(upgrade, this.state.game);
         if (wasSuccessful) {
             this.setState({
-                game: newGame
+                game: newGame,
+                messages: this.state.messages.concat([`${upgrade.name} purchased`])
             });
         }
     }
@@ -114,7 +120,7 @@ export class VikingClicker extends Component<{}, VikingClickerState> {
         const [wasSuccessful, newGame] = hireServant(this.state.game);
         if (wasSuccessful) {
             this.setState({
-                game: newGame
+                game: newGame,
             });
         }
     }
