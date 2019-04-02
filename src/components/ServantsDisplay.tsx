@@ -24,21 +24,25 @@ export const ServantsDisplay: FunctionComponent = () => {
                             <Typography>
                                 Farmhands:
                             </Typography>
-                            <RemoveCircleOutlineIcon />
-                            <Typography>
-                                {context.servants.farmhands}
-                            </Typography>
-                            <AddCircleOutlineIcon />
+                            <div style={{ width: "inherit", textAlign: "right" }}>
+                                <Typography variant="title">
+                                    <RemoveCircleOutlineIcon style={{ verticalAlign: "text-top" }} />
+                                    {`  ${context.servants.farmhands}  `}
+                                    <AddCircleOutlineIcon style={{ verticalAlign: "text-top" }} />
+                                </Typography>
+                            </div>
                         </ListItem>
                         <ListItem>
                             <Typography>
                                 Woodcutters:
                             </Typography>
-                            <RemoveCircleOutlineIcon />
-                            <Typography>
-                                {context.servants.woodcutters}
-                            </Typography>
-                            <AddCircleOutlineIcon />
+                            <div style={{ width: "inherit", textAlign: "right" }}>
+                                <Typography variant="title">
+                                    <RemoveCircleOutlineIcon style={{ verticalAlign: "text-top" }} />
+                                    {`  ${context.servants.woodcutters}  `}
+                                    <AddCircleOutlineIcon style={{ verticalAlign: "text-top" }} />
+                                </Typography>
+                            </div>
                         </ListItem>
                     </List>
                 </>
