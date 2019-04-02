@@ -3,12 +3,12 @@ import ListItem from "@material-ui/core/ListItem";
 import * as React from "react";
 import { FunctionComponent } from "react";
 import { ActionClicker } from "./ActionClicker";
-import { VikingClickerContextConsumer } from "./VikingClicker";
+import { VikingClickerContext, VikingClickerContextConsumer } from "./VikingClicker";
 
 export const Actions: FunctionComponent = () => {
     return (
         <VikingClickerContextConsumer>
-            {(context) =>
+            {(context: VikingClickerContext) =>
                 <div
                     style={{
                         justifyContent: "center",

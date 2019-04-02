@@ -19,7 +19,8 @@ export const initializeGame = (): VikingClickerGame => {
             gold: 0
         },
         servants: {
-            farmhands: 0
+            farmhands: 0,
+            woodcutters: 0
         },
         crewMembers: {
             raiders: 0

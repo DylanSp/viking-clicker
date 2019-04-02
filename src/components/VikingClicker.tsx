@@ -32,7 +32,8 @@ const { Provider, Consumer } = React.createContext<VikingClickerContext>({
     purchasedFoodUpgrades: [],
     purchaseFoodUpgrade: (upgrade) => { return; },
     servants: {
-        farmhands: 0
+        farmhands: 0,
+        woodcutters: 0
     },
     servantCost: 0,
     hireServant: () => { return; },
