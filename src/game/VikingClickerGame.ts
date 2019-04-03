@@ -3,12 +3,14 @@ import { CrewMembers } from "./CrewMembers";
 import { FoodUpgrade } from "./FoodUpgrades";
 import { Resources } from "./Resources";
 import { Servants } from "./Servants";
+import { WoodUpgrade } from "./WoodUpgrades";
 
 export interface VikingClickerGame {
     resources: Resources;
     servants: Servants;
     crewMembers: CrewMembers;
-    foodUpgradesPurchased: FoodUpgrade[];   // genericize this to all upgrades purchased?
+    foodUpgradesPurchased: FoodUpgrade[];   // TODO - genericize this to all upgrades purchased?
+    woodUpgradesPurchased: WoodUpgrade[];
 }
 
 export const initializeGame = (): VikingClickerGame => {
@@ -26,7 +28,8 @@ export const initializeGame = (): VikingClickerGame => {
         crewMembers: {
             raiders: 0
         },
-        foodUpgradesPurchased: []
+        foodUpgradesPurchased: [],
+        woodUpgradesPurchased: []
     };
 };
 
@@ -41,18 +44,24 @@ export const plow = (game: VikingClickerGame): VikingClickerGame => {
 
 export const chop = (game: VikingClickerGame): VikingClickerGame => {
     return produce(game, (draft) => {
-        draft.resources.wood += 1;
+        const multiplier = draft.woodUpgradesPurchased
+                            .map((upgrade) => upgrade.chopPercentageAdded)
+                            .reduce((acc, x) => acc + x, 1);
+        draft.resources.wood += multiplier;
     });
 };
 
 export const runTick = (game: VikingClickerGame): VikingClickerGame => {
     return produce(game, (draft) => {
         const foodMultiplier = draft.foodUpgradesPurchased
-                            .map((upgrade) => upgrade.farmhandPercentageAdded)
-                            .reduce((acc, x) => acc + x, 1);
+                                .map((upgrade) => upgrade.farmhandPercentageAdded)
+                                .reduce((acc, x) => acc + x, 1);
         draft.resources.food += draft.servants.farmhands * foodMultiplier;
 
-        draft.resources.wood += draft.servants.woodcutters;
+        const woodMultiplier = draft.woodUpgradesPurchased
+                                .map((upgrade) => upgrade.woodcutterPercentageAdded)
+                                .reduce((acc, x) => acc + x, 1);
+        draft.resources.wood += draft.servants.woodcutters * woodMultiplier;
     });
 };
 
@@ -66,6 +75,23 @@ export const purchaseFoodUpgrade = (upgrade: FoodUpgrade, game: VikingClickerGam
             draft.resources.gold -= upgrade.cost.gold;
 
             draft.foodUpgradesPurchased.push(upgrade);
+        })];
+     }
+
+    // intentional no-op in produce(), just create a copy of the game with no changes
+    return [false, produce(game, (draft) => { return; })];
+};
+
+export const purchaseWoodUpgrade = (upgrade: WoodUpgrade, game: VikingClickerGame): [boolean, VikingClickerGame] => {
+    if (game.resources.food >= upgrade.cost.food
+     && game.resources.wood >= upgrade.cost.wood
+     && game.resources.gold >= upgrade.cost.gold) {
+        return [true, produce(game, (draft) => {
+            draft.resources.food -= upgrade.cost.food;
+            draft.resources.wood -= upgrade.cost.wood;
+            draft.resources.gold -= upgrade.cost.gold;
+
+            draft.woodUpgradesPurchased.push(upgrade);
         })];
      }
 

@@ -5,7 +5,8 @@ import { FoodUpgrade } from "../game/FoodUpgrades";
 import { Resources } from "../game/Resources";
 import { Servants } from "../game/Servants";
 import { assignFarmhand, assignWoodcutter, chop, getServantCost, hireServant, initializeGame, plow, purchaseFoodUpgrade,
-         runTick, unassignFarmhand, unassignWoodcutter, VikingClickerGame } from "../game/VikingClickerGame";
+         purchaseWoodUpgrade, runTick, unassignFarmhand, unassignWoodcutter, VikingClickerGame } from "../game/VikingClickerGame";
+import { WoodUpgrade } from "../game/WoodUpgrades";
 import { LeftPanel } from "./LeftPanel";
 import { MainPanel } from "./MainPanel";
 import { RightPanel } from "./RightPanel";
@@ -16,6 +17,8 @@ export interface VikingClickerContext {
     resources: Resources;
     purchasedFoodUpgrades: FoodUpgrade[];
     purchaseFoodUpgrade: (upgrade: FoodUpgrade) => void;
+    purchasedWoodUpgrades: WoodUpgrade[];
+    purchaseWoodUpgrade: (upgrade: WoodUpgrade) => void;
     servants: Servants;
     servantCost: number;
     hireServant: () => void;
@@ -36,6 +39,8 @@ const { Provider, Consumer } = React.createContext<VikingClickerContext>({
     },
     purchasedFoodUpgrades: [],
     purchaseFoodUpgrade: (upgrade) => { return; },
+    purchasedWoodUpgrades: [],
+    purchaseWoodUpgrade: (upgrade) => { return; },
     servants: {
         unassigned: 0,
         farmhands: 0,
@@ -84,6 +89,8 @@ export class VikingClicker extends Component<{}, VikingClickerState> {
                     resources: this.state.game.resources,
                     purchasedFoodUpgrades: this.state.game.foodUpgradesPurchased,
                     purchaseFoodUpgrade: this.purchaseFoodUpgrade,
+                    purchasedWoodUpgrades: this.state.game.woodUpgradesPurchased,
+                    purchaseWoodUpgrade: this.purchaseWoodUpgrade,
                     servants: this.state.game.servants,
                     servantCost: getServantCost(this.state.game),
                     hireServant: this.hireServant,
@@ -123,6 +130,16 @@ export class VikingClicker extends Component<{}, VikingClickerState> {
 
     private purchaseFoodUpgrade = (upgrade: FoodUpgrade) => {
         const [wasSuccessful, newGame] = purchaseFoodUpgrade(upgrade, this.state.game);
+        if (wasSuccessful) {
+            this.setState({
+                game: newGame,
+                messages: this.state.messages.concat([`${upgrade.name} purchased`])
+            });
+        }
+    }
+
+    private purchaseWoodUpgrade = (upgrade: WoodUpgrade) => {
+        const [wasSuccessful, newGame] = purchaseWoodUpgrade(upgrade, this.state.game);
         if (wasSuccessful) {
             this.setState({
                 game: newGame,
