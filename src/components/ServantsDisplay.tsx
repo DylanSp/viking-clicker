@@ -19,21 +19,21 @@ export const ServantsDisplay: FunctionComponent = () => {
                     <Button variant="outlined" onClick={context.hireServant}>
                         Hire: {context.servantCost} Food
                     </Button>
-                    <Typography variant="title">
+                    <Typography variant="h6">
                         Total hired servants: {context.servants.unassigned + context.servants.farmhands + context.servants.woodcutters}
                     </Typography>
                     <List>
                         <ListItem style={{ display: "block", textAlign: "center" }}>
-                            <Typography variant="title">
+                            <Typography variant="h6">
                                 Idle servants: {context.servants.unassigned}
                             </Typography>
                         </ListItem>
                         <ListItem>
-                            <Typography variant="title">
+                            <Typography variant="h6">
                                 Farmhands:
                             </Typography>
                             <div style={{ width: "inherit", textAlign: "right" }}>
-                                <Typography variant="title">
+                                <Typography variant="h6">
                                     <RemoveCircleOutlineIcon
                                         onClick={context.unassignFarmhand}
                                         style={{
@@ -53,11 +53,11 @@ export const ServantsDisplay: FunctionComponent = () => {
                             </div>
                         </ListItem>
                         <ListItem>
-                            <Typography variant="title">
+                            <Typography variant="h6">
                                 Woodcutters:
                             </Typography>
                             <div style={{ width: "inherit", textAlign: "right" }}>
-                                <Typography variant="title">
+                                <Typography variant="h6">
                                     <RemoveCircleOutlineIcon
                                         onClick={context.unassignWoodcutter}
                                         style={{
