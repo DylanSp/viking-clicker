@@ -33,5 +33,17 @@ export const foodUpgrades: FoodUpgrade[] = [
             wood: 0,
             gold: 0
         }
+    },
+    {
+        name: "Heavy Plow",
+        id: "HeavyPlowFoodUp",
+        description: "A sturdier plow with a moldboard for plowing heavier soil. Plow effectiveness x2.",
+        plowPercentageAdded: 1,
+        farmhandPercentageAdded: 0,
+        cost: {
+            food: 0,
+            wood: 1000,
+            gold: 0
+        }
     }
 ];

@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import * as React from "react";
 import { FunctionComponent } from "react";
 import { FoodUpgrade, foodUpgrades } from "../game/FoodUpgrades";
+import { Resources } from "../game/Resources";
 import { WoodUpgrade, woodUpgrades } from "../game/WoodUpgrades";
 import { VikingClickerContext, VikingClickerContextConsumer } from "./VikingClicker";
 
@@ -22,18 +23,20 @@ export const UpgradeDisplay: FunctionComponent = () => {
                         {availableFoodUpgrades.map((upgrade, index) => (
                             <ListItem style={{borderBottom: "1px solid gray"}} key={index}>
                                 <Tooltip title={upgrade.description} placement="right">
-                                    <Button
-                                        variant="outlined"
-                                        onClick={() => context.purchaseFoodUpgrade(upgrade)}
-                                        disabled={context.purchasedFoodUpgrades.includes(upgrade)}  // TODO - not necessary with filtering for available upgrades above?
-                                        style={{
-                                            whiteSpace: "nowrap",
-                                            paddingLeft: "1.5rem",
-                                            paddingRight: "1.5rem"
-                                        }}
-                                    >
-                                        {upgrade.name}
-                                    </Button>
+                                    <div>{/* need this div so tooltip works even when button is disabled */}
+                                        <Button
+                                            variant="outlined"
+                                            onClick={() => context.purchaseFoodUpgrade(upgrade)}
+                                            disabled={!hasEnoughResources(upgrade, context.resources)}
+                                            style={{
+                                                whiteSpace: "nowrap",
+                                                paddingLeft: "1.5rem",
+                                                paddingRight: "1.5rem"
+                                            }}
+                                        >
+                                            {upgrade.name}
+                                        </Button>
+                                    </div>
                                 </Tooltip>
                                 <div style={{width: "inherit", textAlign: "right"}}>
                                     <Typography>
@@ -45,18 +48,20 @@ export const UpgradeDisplay: FunctionComponent = () => {
                         {availableWoodUpgrades.map((upgrade, index) => (
                             <ListItem style={{borderBottom: "1px solid gray"}} key={index}>
                                 <Tooltip title={upgrade.description} placement="right">
-                                    <Button
-                                        variant="outlined"
-                                        onClick={() => context.purchaseWoodUpgrade(upgrade)}
-                                        disabled={context.purchasedWoodUpgrades.includes(upgrade)}
-                                        style={{
-                                            whiteSpace: "nowrap",
-                                            paddingLeft: "1.5rem",
-                                            paddingRight: "1.5rem"
-                                        }}
-                                    >
-                                        {upgrade.name}
-                                    </Button>
+                                    <div>{/* need this div so tooltip works even when button is disabled */}
+                                        <Button
+                                            variant="outlined"
+                                            onClick={() => context.purchaseWoodUpgrade(upgrade)}
+                                            disabled={!hasEnoughResources(upgrade, context.resources)}
+                                            style={{
+                                                whiteSpace: "nowrap",
+                                                paddingLeft: "1.5rem",
+                                                paddingRight: "1.5rem"
+                                            }}
+                                        >
+                                            {upgrade.name}
+                                        </Button>
+                                    </div>
                                 </Tooltip>
                                 <div style={{width: "inherit", textAlign: "right"}}>
                                     <Typography>
@@ -88,4 +93,10 @@ const displayCost = (upgrade: FoodUpgrade | WoodUpgrade): string => {
     }
 
     return costText.join(", ");
+};
+
+const hasEnoughResources = (upgrade: FoodUpgrade | WoodUpgrade, resources: Resources): boolean => {
+    return upgrade.cost.food <= resources.food
+        && upgrade.cost.wood <= resources.wood
+        && upgrade.cost.gold <= resources.gold;
 };
