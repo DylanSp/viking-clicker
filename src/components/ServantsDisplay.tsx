@@ -8,7 +8,10 @@ import * as React from "react";
 import { FunctionComponent } from "react";
 import { VikingClickerContext, VikingClickerContextConsumer } from "./VikingClicker";
 
+// TODO - refactor into multiple components?
 export const ServantsDisplay: FunctionComponent = () => {
+    const disabledIconOpacity = 0.3;
+
     return (
         <VikingClickerContextConsumer>
             {(context: VikingClickerContext) =>
@@ -16,31 +19,56 @@ export const ServantsDisplay: FunctionComponent = () => {
                     <Button variant="outlined" onClick={context.hireServant}>
                         Hire: {context.servantCost} Food
                     </Button>
-                    <Typography>
-                        Total hired servants: {context.servants.farmhands + context.servants.woodcutters}
+                    <Typography variant="title">
+                        Total hired servants: {context.servants.unassigned + context.servants.farmhands + context.servants.woodcutters}
                     </Typography>
                     <List>
+                        <ListItem style={{ display: "block", textAlign: "center" }}>
+                            <Typography variant="title">
+                                Idle servants: {context.servants.unassigned}
+                            </Typography>
+                        </ListItem>
                         <ListItem>
-                            <Typography>
+                            <Typography variant="title">
                                 Farmhands:
                             </Typography>
                             <div style={{ width: "inherit", textAlign: "right" }}>
                                 <Typography variant="title">
-                                    <RemoveCircleOutlineIcon style={{ verticalAlign: "text-top" }} />
+                                    <RemoveCircleOutlineIcon
+                                        style={{
+                                            opacity: context.servants.farmhands > 0 ? 1 : disabledIconOpacity,
+                                            verticalAlign: "text-top"
+                                        }}
+                                    />
                                     {`  ${context.servants.farmhands}  `}
-                                    <AddCircleOutlineIcon style={{ verticalAlign: "text-top" }} />
+                                    <AddCircleOutlineIcon
+                                        style={{
+                                            opacity: context.servants.unassigned > 0 ? 1 : disabledIconOpacity,
+                                            verticalAlign: "text-top"
+                                        }}
+                                    />
                                 </Typography>
                             </div>
                         </ListItem>
                         <ListItem>
-                            <Typography>
+                            <Typography variant="title">
                                 Woodcutters:
                             </Typography>
                             <div style={{ width: "inherit", textAlign: "right" }}>
                                 <Typography variant="title">
-                                    <RemoveCircleOutlineIcon style={{ verticalAlign: "text-top" }} />
+                                    <RemoveCircleOutlineIcon
+                                        style={{
+                                            opacity: context.servants.woodcutters > 0 ? 1 : disabledIconOpacity,
+                                            verticalAlign: "text-top"
+                                        }}
+                                    />
                                     {`  ${context.servants.woodcutters}  `}
-                                    <AddCircleOutlineIcon style={{ verticalAlign: "text-top" }} />
+                                    <AddCircleOutlineIcon
+                                        style={{
+                                            opacity: context.servants.unassigned > 0 ? 1 : disabledIconOpacity,
+                                            verticalAlign: "text-top"
+                                        }}
+                                    />
                                 </Typography>
                             </div>
                         </ListItem>

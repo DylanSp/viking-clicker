@@ -19,6 +19,7 @@ export const initializeGame = (): VikingClickerGame => {
             gold: 0
         },
         servants: {
+            unassigned: 0,
             farmhands: 0,
             woodcutters: 0
         },
@@ -75,7 +76,7 @@ export const hireServant = (game: VikingClickerGame): [boolean, VikingClickerGam
     if (game.resources.food >= cost) {
         return [true, produce(game, (draft) => {
             game.resources.food -= cost;
-            draft.servants.farmhands += 1;
+            draft.servants.unassigned += 1;
         })];
     }
 

@@ -6,13 +6,13 @@ import Typography from "@material-ui/core/Typography";
 import * as React from "react";
 import { FunctionComponent } from "react";
 import { FoodUpgrade, foodUpgrades } from "../game/FoodUpgrades";
-import { VikingClickerContextConsumer } from "./VikingClicker";
+import { VikingClickerContext, VikingClickerContextConsumer } from "./VikingClicker";
 
 export const UpgradeDisplay: FunctionComponent = () => {
 
     return (
         <VikingClickerContextConsumer>
-            {(context) => {
+            {(context: VikingClickerContext) => {
                 const availableUpgrades = foodUpgrades.filter((upgrade) => !context.purchasedFoodUpgrades.includes(upgrade));
 
                 return (

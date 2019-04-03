@@ -3,12 +3,12 @@ import ListItem from "@material-ui/core/ListItem";
 import Typography from "@material-ui/core/Typography";
 import * as React from "react";
 import { FunctionComponent } from "react";
-import { VikingClickerContextConsumer } from "./VikingClicker";
+import { VikingClickerContext, VikingClickerContextConsumer } from "./VikingClicker";
 
 export const MessageDisplay: FunctionComponent = () => {
     return (
         <VikingClickerContextConsumer>
-            {(context) => (
+            {(context: VikingClickerContext) => (
                 <List>
                     {context.messages.slice(-5).map((message, index) => (
                         <ListItem key={index}>
