@@ -35,6 +35,7 @@ export const ServantsDisplay: FunctionComponent = () => {
                             <div style={{ width: "inherit", textAlign: "right" }}>
                                 <Typography variant="title">
                                     <RemoveCircleOutlineIcon
+                                        onClick={context.unassignFarmhand}
                                         style={{
                                             opacity: context.servants.farmhands > 0 ? 1 : disabledIconOpacity,
                                             verticalAlign: "text-top"
@@ -42,6 +43,7 @@ export const ServantsDisplay: FunctionComponent = () => {
                                     />
                                     {`  ${context.servants.farmhands}  `}
                                     <AddCircleOutlineIcon
+                                        onClick={context.assignFarmhand}
                                         style={{
                                             opacity: context.servants.unassigned > 0 ? 1 : disabledIconOpacity,
                                             verticalAlign: "text-top"
@@ -57,6 +59,7 @@ export const ServantsDisplay: FunctionComponent = () => {
                             <div style={{ width: "inherit", textAlign: "right" }}>
                                 <Typography variant="title">
                                     <RemoveCircleOutlineIcon
+                                        onClick={context.unassignWoodcutter}
                                         style={{
                                             opacity: context.servants.woodcutters > 0 ? 1 : disabledIconOpacity,
                                             verticalAlign: "text-top"
@@ -64,6 +67,7 @@ export const ServantsDisplay: FunctionComponent = () => {
                                     />
                                     {`  ${context.servants.woodcutters}  `}
                                     <AddCircleOutlineIcon
+                                        onClick={context.assignWoodcutter}
                                         style={{
                                             opacity: context.servants.unassigned > 0 ? 1 : disabledIconOpacity,
                                             verticalAlign: "text-top"

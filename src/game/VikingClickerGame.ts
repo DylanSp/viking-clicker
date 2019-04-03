@@ -14,7 +14,7 @@ export interface VikingClickerGame {
 export const initializeGame = (): VikingClickerGame => {
     return {
         resources: {
-            food: 0,
+            food: 500,
             wood: 0,
             gold: 0
         },
@@ -47,10 +47,12 @@ export const chop = (game: VikingClickerGame): VikingClickerGame => {
 
 export const runTick = (game: VikingClickerGame): VikingClickerGame => {
     return produce(game, (draft) => {
-        const multiplier = draft.foodUpgradesPurchased
+        const foodMultiplier = draft.foodUpgradesPurchased
                             .map((upgrade) => upgrade.farmhandPercentageAdded)
                             .reduce((acc, x) => acc + x, 1);
-        draft.resources.food += draft.servants.farmhands * multiplier;
+        draft.resources.food += draft.servants.farmhands * foodMultiplier;
+
+        draft.resources.wood += draft.servants.woodcutters;
     });
 };
 
@@ -90,4 +92,52 @@ export const getServantCost = (game: VikingClickerGame): number => {
     const baseMultiplier = 1.15;
     const numServants = game.servants.farmhands;
     return baseCost * (baseMultiplier ** numServants);
+};
+
+export const assignFarmhand = (game: VikingClickerGame): [boolean, VikingClickerGame] => {
+    if (game.servants.unassigned > 0) {
+        return [true, produce(game, (draft) => {
+            draft.servants.unassigned--;
+            draft.servants.farmhands++;
+        })];
+    }
+
+    // intentional no-op in produce(), just create a copy of the game with no changes
+    return [false, produce(game, (draft) => { return; })];
+};
+
+export const unassignFarmhand = (game: VikingClickerGame): [boolean, VikingClickerGame] => {
+    if (game.servants.farmhands > 0) {
+        return [true, produce(game, (draft) => {
+            draft.servants.farmhands--;
+            draft.servants.unassigned++;
+        })];
+    }
+
+    // intentional no-op in produce(), just create a copy of the game with no changes
+    return [false, produce(game, (draft) => { return; })];
+};
+
+export const assignWoodcutter = (game: VikingClickerGame): [boolean, VikingClickerGame] => {
+    if (game.servants.unassigned > 0) {
+        return [true, produce(game, (draft) => {
+            draft.servants.unassigned--;
+            draft.servants.woodcutters++;
+        })];
+    }
+
+    // intentional no-op in produce(), just create a copy of the game with no changes
+    return [false, produce(game, (draft) => { return; })];
+};
+
+export const unassignWoodcutter = (game: VikingClickerGame): [boolean, VikingClickerGame] => {
+    if (game.servants.woodcutters > 0) {
+        return [true, produce(game, (draft) => {
+            draft.servants.woodcutters--;
+            draft.servants.unassigned++;
+        })];
+    }
+
+    // intentional no-op in produce(), just create a copy of the game with no changes
+    return [false, produce(game, (draft) => { return; })];
 };

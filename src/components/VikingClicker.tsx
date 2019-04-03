@@ -4,7 +4,8 @@ import { Component } from "react";
 import { FoodUpgrade } from "../game/FoodUpgrades";
 import { Resources } from "../game/Resources";
 import { Servants } from "../game/Servants";
-import { chop, getServantCost, hireServant, initializeGame, plow, purchaseFoodUpgrade, runTick, VikingClickerGame } from "../game/VikingClickerGame";
+import { assignFarmhand, assignWoodcutter, chop, getServantCost, hireServant, initializeGame, plow, purchaseFoodUpgrade,
+         runTick, unassignFarmhand, unassignWoodcutter, VikingClickerGame } from "../game/VikingClickerGame";
 import { LeftPanel } from "./LeftPanel";
 import { MainPanel } from "./MainPanel";
 import { RightPanel } from "./RightPanel";
@@ -19,6 +20,10 @@ export interface VikingClickerContext {
     servantCost: number;
     hireServant: () => void;
     messages: string[];
+    assignFarmhand: () => void;
+    unassignFarmhand: () => void;
+    assignWoodcutter: () => void;
+    unassignWoodcutter: () => void;
 }
 
 const { Provider, Consumer } = React.createContext<VikingClickerContext>({
@@ -38,7 +43,11 @@ const { Provider, Consumer } = React.createContext<VikingClickerContext>({
     },
     servantCost: 0,
     hireServant: () => { return; },
-    messages: []
+    messages: [],
+    assignFarmhand: () => { return; },
+    unassignFarmhand: () => { return; },
+    assignWoodcutter: () => { return; },
+    unassignWoodcutter: () => { return; }
 });
 
 export const VikingClickerContextProvider = Provider;
@@ -78,7 +87,11 @@ export class VikingClicker extends Component<{}, VikingClickerState> {
                     servants: this.state.game.servants,
                     servantCost: getServantCost(this.state.game),
                     hireServant: this.hireServant,
-                    messages: this.state.messages
+                    messages: this.state.messages,
+                    assignFarmhand: this.assignFarmhand,
+                    unassignFarmhand: this.unassignFarmhand,
+                    assignWoodcutter: this.assignWoodcutter,
+                    unassignWoodcutter: this.unassignWoodcutter
                 }}
             >
                 <Grid container={true} spacing={0}>
@@ -123,6 +136,42 @@ export class VikingClicker extends Component<{}, VikingClickerState> {
         if (wasSuccessful) {
             this.setState({
                 game: newGame,
+            });
+        }
+    }
+
+    private assignFarmhand = () => {
+        const [wasSuccessful, newGame] = assignFarmhand(this.state.game);
+        if (wasSuccessful) {
+            this.setState({
+                game: newGame
+            });
+        }
+    }
+
+    private unassignFarmhand = () => {
+        const [wasSuccessful, newGame] = unassignFarmhand(this.state.game);
+        if (wasSuccessful) {
+            this.setState({
+                game: newGame
+            });
+        }
+    }
+
+    private assignWoodcutter = () => {
+        const [wasSuccessful, newGame] = assignWoodcutter(this.state.game);
+        if (wasSuccessful) {
+            this.setState({
+                game: newGame
+            });
+        }
+    }
+
+    private unassignWoodcutter = () => {
+        const [wasSuccessful, newGame] = unassignWoodcutter(this.state.game);
+        if (wasSuccessful) {
+            this.setState({
+                game: newGame
             });
         }
     }
