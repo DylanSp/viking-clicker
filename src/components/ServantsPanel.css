@@ -1,0 +1,8 @@
+.servant-panel-enter {
+    opacity: 0;
+}
+
+.servant-panel-enter-active {
+    opacity: 1;
+    transition: opacity 1000ms;
+}

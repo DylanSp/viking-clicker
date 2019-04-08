@@ -13,6 +13,7 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-scripts": "2.1.8",
+    "react-transition-group": "^2.9.0",
     "typeface-roboto": "0.0.54",
     "typeface-uncial-antiqua": "0.0.71",
     "typescript": "3.3.4000"
