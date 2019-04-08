@@ -24,7 +24,7 @@ export const LeftPanel: FunctionComponent = () => {
             >
                 <UpgradePanel />
             </Grid>
-            <Grid item={true} xs={6} style={{ maxWidth: "100%" }}>
+            <Grid item={true} xs={6} style={{ maxWidth: "100%", position: "relative"}}>
                 <ServantsPanel />
             </Grid>
         </Grid>
