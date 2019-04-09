@@ -1,6 +1,7 @@
 import Typography from "@material-ui/core/Typography";
 import React, { Component } from "react";
 import { CSSTransition } from "react-transition-group";
+import farmer from "../svg/farmer.svg";
 import { ServantsDisplay } from "./ServantsDisplay";
 import "./ServantsPanel.css";
 
@@ -31,7 +32,21 @@ export class ServantsPanel extends Component<{}, ServantsPanelState> {
                     </div>
                 </CSSTransition>
                 <CSSTransition in={!this.state.isVisible} timeout={2000} unmountOnExit={true} classNames="servant-overlay">
-                    <div style={{height: "100%", width: "100%", backgroundColor: "black", position: "absolute"}} />
+                    <div style={{height: "100%", width: "100%", backgroundColor: "black", position: "absolute"}}>
+                        <img
+                            src={farmer}
+                            style={{
+                                filter: "invert(100%)",
+                                width: "75%",
+                                position: "absolute",
+                                margin: "auto",
+                                top: 0,
+                                bottom: 0,
+                                left: 0,
+                                right: 0
+                            }}
+                        />
+                    </div>
                 </CSSTransition>
             </>
         );
