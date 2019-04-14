@@ -1,17 +1,17 @@
-.servant-panel-enter {
+.panel-enter {
     opacity: 0;
 }
 
-.servant-panel-enter-active {
+.panel-enter-active {
     opacity: 1;
     transition: opacity 2000ms;
 }
 
-.servant-overlay-exit {
+.overlay-exit {
     opacity: 1;
 }
 
-.servant-overlay-exit-active {
+.overlay-exit-active {
     opacity: 0;
     transition: opacity 2000ms;
 }

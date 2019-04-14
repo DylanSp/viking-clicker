@@ -19,13 +19,14 @@ export const RightPanel: FunctionComponent = () => {
                 xs={6}
                 style={{
                     borderBottom: "1px solid black",
-                    maxWidth: "100%"
+                    maxWidth: "100%",
+                    position: "relative"
                 }}
             >
-                <RaidingPanel />
+                <RaidingPanel isVisible={false} />
             </Grid>
-            <Grid item={true} xs={6} style={{ maxWidth: "100%" }}>
-                <CrewPanel />
+            <Grid item={true} xs={6} style={{ maxWidth: "100%", position: "relative" }}>
+                <CrewPanel isVisible={false} />
             </Grid>
         </Grid>
     );

@@ -1,5 +1,5 @@
 import Grid from "@material-ui/core/Grid";
-import * as React from "react";
+import React, { useState } from "react";
 import { FunctionComponent } from "react";
 import { ServantsPanel } from "./ServantsPanel";
 import { UpgradePanel } from "./UpgradePanel";
