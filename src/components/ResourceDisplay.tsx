@@ -15,9 +15,9 @@ export const ResourceDisplay: FunctionComponent = () => {
                         Resources:
                     </Typography>
                     <List>
-                        {displayFood(context.resources.food)}
-                        {displayWood(context.resources.wood)}
-                        {displayGold(context.resources.gold)}
+                        {displayFood(context.game.resources.food)}
+                        {displayWood(context.game.resources.wood)}
+                        {displayGold(context.game.resources.gold)}
                     </List>
                 </>
             }

@@ -20,12 +20,12 @@ export const ServantsDisplay: FunctionComponent = () => {
                         Hire: {context.servantCost} Food
                     </Button>
                     <Typography variant="h6">
-                        Total hired servants: {context.servants.unassigned + context.servants.farmhands + context.servants.woodcutters}
+                        Total hired servants: {context.game.servants.unassigned + context.game.servants.farmhands + context.game.servants.woodcutters}
                     </Typography>
                     <List>
                         <ListItem style={{ display: "block", textAlign: "center" }}>
                             <Typography variant="h6">
-                                Idle servants: {context.servants.unassigned}
+                                Idle servants: {context.game.servants.unassigned}
                             </Typography>
                         </ListItem>
                         <ListItem>
@@ -37,15 +37,15 @@ export const ServantsDisplay: FunctionComponent = () => {
                                     <RemoveCircleOutlineIcon
                                         onClick={context.unassignFarmhand}
                                         style={{
-                                            opacity: context.servants.farmhands > 0 ? 1 : disabledIconOpacity,
+                                            opacity: context.game.servants.farmhands > 0 ? 1 : disabledIconOpacity,
                                             verticalAlign: "text-top"
                                         }}
                                     />
-                                    {`  ${context.servants.farmhands}  `}
+                                    {`  ${context.game.servants.farmhands}  `}
                                     <AddCircleOutlineIcon
                                         onClick={context.assignFarmhand}
                                         style={{
-                                            opacity: context.servants.unassigned > 0 ? 1 : disabledIconOpacity,
+                                            opacity: context.game.servants.unassigned > 0 ? 1 : disabledIconOpacity,
                                             verticalAlign: "text-top"
                                         }}
                                     />
@@ -61,15 +61,15 @@ export const ServantsDisplay: FunctionComponent = () => {
                                     <RemoveCircleOutlineIcon
                                         onClick={context.unassignWoodcutter}
                                         style={{
-                                            opacity: context.servants.woodcutters > 0 ? 1 : disabledIconOpacity,
+                                            opacity: context.game.servants.woodcutters > 0 ? 1 : disabledIconOpacity,
                                             verticalAlign: "text-top"
                                         }}
                                     />
-                                    {`  ${context.servants.woodcutters}  `}
+                                    {`  ${context.game.servants.woodcutters}  `}
                                     <AddCircleOutlineIcon
                                         onClick={context.assignWoodcutter}
                                         style={{
-                                            opacity: context.servants.unassigned > 0 ? 1 : disabledIconOpacity,
+                                            opacity: context.game.servants.unassigned > 0 ? 1 : disabledIconOpacity,
                                             verticalAlign: "text-top"
                                         }}
                                     />

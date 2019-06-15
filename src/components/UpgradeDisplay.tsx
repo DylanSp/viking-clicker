@@ -15,8 +15,8 @@ export const UpgradeDisplay: FunctionComponent = () => {
     return (
         <VikingClickerContextConsumer>
             {(context: VikingClickerContext) => {
-                const availableFoodUpgrades = foodUpgrades.filter((upgrade) => !context.purchasedFoodUpgrades.includes(upgrade));
-                const availableWoodUpgrades = woodUpgrades.filter((upgrade) => !context.purchasedWoodUpgrades.includes(upgrade));
+                const availableFoodUpgrades = foodUpgrades.filter((upgrade) => !context.game.foodUpgradesPurchased.includes(upgrade));
+                const availableWoodUpgrades = woodUpgrades.filter((upgrade) => !context.game.woodUpgradesPurchased.includes(upgrade));
 
                 return (
                     <List>
@@ -27,7 +27,7 @@ export const UpgradeDisplay: FunctionComponent = () => {
                                         <Button
                                             variant="outlined"
                                             onClick={() => context.purchaseFoodUpgrade(upgrade)}
-                                            disabled={!hasEnoughResources(upgrade, context.resources)}
+                                            disabled={!hasEnoughResources(upgrade, context.game.resources)}
                                             style={{
                                                 whiteSpace: "nowrap",
                                                 paddingLeft: "1.5rem",
@@ -52,7 +52,7 @@ export const UpgradeDisplay: FunctionComponent = () => {
                                         <Button
                                             variant="outlined"
                                             onClick={() => context.purchaseWoodUpgrade(upgrade)}
-                                            disabled={!hasEnoughResources(upgrade, context.resources)}
+                                            disabled={!hasEnoughResources(upgrade, context.game.resources)}
                                             style={{
                                                 whiteSpace: "nowrap",
                                                 paddingLeft: "1.5rem",

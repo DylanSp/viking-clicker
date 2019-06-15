@@ -12,14 +12,11 @@ import { MainPanel } from "./MainPanel";
 import { RightPanel } from "./RightPanel";
 
 export interface VikingClickerContext {
+    game: VikingClickerGame;
     handlePlow: () => void;
     handleChop: () => void;
-    resources: Resources;
-    purchasedFoodUpgrades: FoodUpgrade[];
     purchaseFoodUpgrade: (upgrade: FoodUpgrade) => void;
-    purchasedWoodUpgrades: WoodUpgrade[];
     purchaseWoodUpgrade: (upgrade: WoodUpgrade) => void;
-    servants: Servants;
     servantCost: number;
     hireServant: () => void;
     messages: string[];
@@ -29,31 +26,7 @@ export interface VikingClickerContext {
     unassignWoodcutter: () => void;
 }
 
-const { Provider, Consumer } = React.createContext<VikingClickerContext>({
-    handlePlow: () => { return; },
-    handleChop: () => { return; },
-    resources: {
-        food: 0,
-        gold: 0,
-        wood: 0
-    },
-    purchasedFoodUpgrades: [],
-    purchaseFoodUpgrade: (upgrade) => { return; },
-    purchasedWoodUpgrades: [],
-    purchaseWoodUpgrade: (upgrade) => { return; },
-    servants: {
-        unassigned: 0,
-        farmhands: 0,
-        woodcutters: 0
-    },
-    servantCost: 0,
-    hireServant: () => { return; },
-    messages: [],
-    assignFarmhand: () => { return; },
-    unassignFarmhand: () => { return; },
-    assignWoodcutter: () => { return; },
-    unassignWoodcutter: () => { return; }
-});
+const { Provider, Consumer } = React.createContext<VikingClickerContext>({} as VikingClickerContext);
 
 export const VikingClickerContextProvider = Provider;
 export const VikingClickerContextConsumer = Consumer;
@@ -84,14 +57,11 @@ export class VikingClicker extends Component<{}, VikingClickerState> {
         return (
             <VikingClickerContextProvider
                 value={{
+                    game: this.state.game,
                     handlePlow: this.handlePlow,
                     handleChop: this.handleChop,
-                    resources: this.state.game.resources,
-                    purchasedFoodUpgrades: this.state.game.foodUpgradesPurchased,
                     purchaseFoodUpgrade: this.purchaseFoodUpgrade,
-                    purchasedWoodUpgrades: this.state.game.woodUpgradesPurchased,
                     purchaseWoodUpgrade: this.purchaseWoodUpgrade,
-                    servants: this.state.game.servants,
                     servantCost: getServantCost(this.state.game),
                     hireServant: this.hireServant,
                     messages: this.state.messages,
