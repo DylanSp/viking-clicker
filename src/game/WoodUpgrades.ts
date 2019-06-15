@@ -13,7 +13,7 @@ export const woodUpgrades: WoodUpgrade[] = [
     {
         name: "Heavy Axe",
         id: "HeavyAxeWoodUp",
-        description: "USe a heavier, sturdier axe to cut down trees more effectively. Chop effectiveness x2.",
+        description: "Use a heavier, sturdier axe to cut down trees more effectively. Chop effectiveness x2.",
         chopPercentageAdded: 1,
         woodcutterPercentageAdded: 0,
         cost: {
