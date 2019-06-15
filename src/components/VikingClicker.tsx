@@ -2,8 +2,6 @@ import Grid from "@material-ui/core/Grid";
 import * as React from "react";
 import { Component } from "react";
 import { FoodUpgrade } from "../game/FoodUpgrades";
-import { Resources } from "../game/Resources";
-import { Servants } from "../game/Servants";
 import { assignFarmhand, assignWoodcutter, chop, getServantCost, hireServant, initializeGame, plow, purchaseFoodUpgrade,
          purchaseWoodUpgrade, runTick, unassignFarmhand, unassignWoodcutter, VikingClickerGame } from "../game/VikingClickerGame";
 import { WoodUpgrade } from "../game/WoodUpgrades";
