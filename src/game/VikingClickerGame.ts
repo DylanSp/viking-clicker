@@ -1,9 +1,10 @@
 import produce from "immer";
 import { CrewMembers } from "./CrewMembers";
-import { FoodUpgrade } from "./FoodUpgrades";
+import { FoodUpgrade, foodUpgrades } from "./FoodUpgrades";
 import { Resources } from "./Resources";
 import { Servants } from "./Servants";
-import { WoodUpgrade } from "./WoodUpgrades";
+import { hasEnoughResources } from "./Upgrades";
+import { WoodUpgrade, woodUpgrades } from "./WoodUpgrades";
 
 export interface VikingClickerGame {
     resources: Resources;
@@ -16,7 +17,7 @@ export interface VikingClickerGame {
 export const initializeGame = (): VikingClickerGame => {
     return {
         resources: {
-            food: 500,
+            food: 0,
             wood: 0,
             gold: 0
         },
@@ -166,4 +167,25 @@ export const unassignWoodcutter = (game: VikingClickerGame): [boolean, VikingCli
 
     // intentional no-op in produce(), just create a copy of the game with no changes
     return [false, produce(game, (draft) => { return; })];
+};
+
+// if any upgrades are available for purchase or already purchased, return true
+export const areUpgradesEnabled = (game: VikingClickerGame): boolean => {
+    if (game.foodUpgradesPurchased.length > 0) {
+        return true;
+    }
+
+    if (game.woodUpgradesPurchased.length > 0) {
+        return true;
+    }
+
+    if (foodUpgrades.some((upgrade) => hasEnoughResources(upgrade, game.resources))) {
+        return true;
+    }
+
+    if (woodUpgrades.some((upgrade) => hasEnoughResources(upgrade, game.resources))) {
+        return true;
+    }
+
+    return false;
 };

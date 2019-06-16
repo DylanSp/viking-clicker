@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import * as React from "react";
 import { FunctionComponent } from "react";
 import { FoodUpgrade, foodUpgrades } from "../game/FoodUpgrades";
-import { Resources } from "../game/Resources";
+import { hasEnoughResources } from "../game/Upgrades";
 import { WoodUpgrade, woodUpgrades } from "../game/WoodUpgrades";
 import { VikingClickerContext, VikingClickerContextConsumer } from "./VikingClicker";
 
@@ -93,10 +93,4 @@ const displayCost = (upgrade: FoodUpgrade | WoodUpgrade): string => {
     }
 
     return costText.join(", ");
-};
-
-const hasEnoughResources = (upgrade: FoodUpgrade | WoodUpgrade, resources: Resources): boolean => {
-    return upgrade.cost.food <= resources.food
-        && upgrade.cost.wood <= resources.wood
-        && upgrade.cost.gold <= resources.gold;
 };

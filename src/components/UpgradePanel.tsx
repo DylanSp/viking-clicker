@@ -1,31 +1,23 @@
 import Typography from "@material-ui/core/Typography";
-import React, { Component } from "react";
+import React, { FunctionComponent } from "react";
 import upgrade from "../svg/upgrade.svg";
 import { PanelOverlay } from "./PanelOverlay";
 import { UpgradeDisplay } from "./UpgradeDisplay";
+import { VikingClickerContextConsumer } from "./VikingClicker";
 
-interface UpgradePanelState {
-    isVisible: boolean;
-}
-
-export class UpgradePanel extends Component<{}, UpgradePanelState> {
-    public constructor(props: {}) {
-        super(props);
-        this.state = {
-            isVisible: false
-        };
-    }
-
-    public render() {
-        return (
-            <PanelOverlay overlayImage={upgrade} isOverlayHidden={this.state.isVisible}>
-                <>
-                    <Typography variant="h4">
-                        Upgrades
-                    </Typography>
-                    <UpgradeDisplay />
-                </>
-            </PanelOverlay>
-        );
-    }
-}
+export const UpgradePanel: FunctionComponent = () => {
+    return (
+        <VikingClickerContextConsumer>
+            {(context) =>
+                <PanelOverlay overlayImage={upgrade} isOverlayHidden={context.areUpgradesEnabled}>
+                    <>
+                        <Typography variant="h4">
+                            Upgrades
+                        </Typography>
+                        <UpgradeDisplay />
+                    </>
+                </PanelOverlay>
+            }
+        </VikingClickerContextConsumer>
+    );
+};
