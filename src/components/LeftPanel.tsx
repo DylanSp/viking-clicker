@@ -1,7 +1,8 @@
 import Grid from "@material-ui/core/Grid";
-import React, { useState } from "react";
+import React from "react";
 import { FunctionComponent } from "react";
-import { ServantsPanel } from "./ServantsPanel";
+import { LandPanel } from "./LandPanel";
+import { RaidingPanel } from "./RaidingPanel";
 import { UpgradePanel } from "./UpgradePanel";
 
 export const LeftPanel: FunctionComponent = () => {
@@ -16,7 +17,7 @@ export const LeftPanel: FunctionComponent = () => {
         >
             <Grid
                 item={true}
-                xs={6}
+                xs={4}
                 style={{
                     borderBottom: "1px solid black",
                     maxWidth: "100%",
@@ -27,13 +28,23 @@ export const LeftPanel: FunctionComponent = () => {
             </Grid>
             <Grid
                 item={true}
-                xs={6}
+                xs={4}
                 style={{
                     maxWidth: "100%",
                     position: "relative"
                 }}
             >
-                <ServantsPanel />
+                <RaidingPanel isVisible={false} />
+            </Grid>
+            <Grid
+                item={true}
+                xs={4}
+                style={{
+                    maxWidth: "100%",
+                    position: "relative"
+                }}
+            >
+                <LandPanel isVisible={false} />
             </Grid>
         </Grid>
     );
