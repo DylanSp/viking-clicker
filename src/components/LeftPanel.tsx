@@ -3,7 +3,6 @@ import React from "react";
 import { FunctionComponent } from "react";
 import { LandPanel } from "./LandPanel";
 import { RaidingPanel } from "./RaidingPanel";
-import { UpgradePanel } from "./UpgradePanel";
 
 export const LeftPanel: FunctionComponent = () => {
     return (
@@ -17,18 +16,7 @@ export const LeftPanel: FunctionComponent = () => {
         >
             <Grid
                 item={true}
-                xs={4}
-                style={{
-                    borderBottom: "1px solid black",
-                    maxWidth: "100%",
-                    position: "relative"
-                }}
-            >
-                <UpgradePanel />
-            </Grid>
-            <Grid
-                item={true}
-                xs={4}
+                xs={6}
                 style={{
                     maxWidth: "100%",
                     position: "relative"
@@ -38,7 +26,7 @@ export const LeftPanel: FunctionComponent = () => {
             </Grid>
             <Grid
                 item={true}
-                xs={4}
+                xs={6}
                 style={{
                     maxWidth: "100%",
                     position: "relative"
