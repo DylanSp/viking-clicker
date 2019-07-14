@@ -9,7 +9,7 @@ export const UpgradePanel: FunctionComponent = () => {
     return (
         <VikingClickerContextConsumer>
             {(context) =>
-                <PanelOverlay overlayImage={upgrade} isOverlayHidden={context.areUpgradesEnabled}>
+                <PanelOverlay overlayImage={upgrade} isOverlayHidden={context.areUpgradesAndServantsEnabled}>
                     <>
                         <Typography variant="h4">
                             Upgrades

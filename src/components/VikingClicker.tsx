@@ -22,7 +22,7 @@ export interface VikingClickerContext {
     unassignFarmhand: () => void;
     assignWoodcutter: () => void;
     unassignWoodcutter: () => void;
-    areUpgradesEnabled: boolean;
+    areUpgradesAndServantsEnabled: boolean;
 }
 
 const { Provider, Consumer } = React.createContext<VikingClickerContext>({} as VikingClickerContext);
@@ -68,7 +68,7 @@ export class VikingClicker extends Component<{}, VikingClickerState> {
                     unassignFarmhand: this.unassignFarmhand,
                     assignWoodcutter: this.assignWoodcutter,
                     unassignWoodcutter: this.unassignWoodcutter,
-                    areUpgradesEnabled: areUpgradesEnabled(this.state.game)
+                    areUpgradesAndServantsEnabled: areUpgradesEnabled(this.state.game)
                 }}
             >
                 <Grid container={true} spacing={0}>
