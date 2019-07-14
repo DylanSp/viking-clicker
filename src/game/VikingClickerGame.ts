@@ -170,7 +170,11 @@ export const unassignWoodcutter = (game: VikingClickerGame): [boolean, VikingCli
 };
 
 // if any upgrades are available for purchase or already purchased, return true
-export const areUpgradesEnabled = (game: VikingClickerGame): boolean => {
+export const areUpgradesAndServantsEnabled = (game: VikingClickerGame): boolean => {
+    if (game.servants.unassigned + game.servants.farmhands + game.servants.woodcutters > 0) {
+        return true;
+    }
+
     if (game.foodUpgradesPurchased.length > 0) {
         return true;
     }

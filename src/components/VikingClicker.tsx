@@ -2,7 +2,7 @@ import Grid from "@material-ui/core/Grid";
 import * as React from "react";
 import { Component } from "react";
 import { FoodUpgrade } from "../game/FoodUpgrades";
-import { areUpgradesEnabled, assignFarmhand, assignWoodcutter, chop, getServantCost, hireServant, initializeGame, plow,
+import { areUpgradesAndServantsEnabled, assignFarmhand, assignWoodcutter, chop, getServantCost, hireServant, initializeGame, plow,
          purchaseFoodUpgrade, purchaseWoodUpgrade, runTick, unassignFarmhand, unassignWoodcutter, VikingClickerGame } from "../game/VikingClickerGame";
 import { WoodUpgrade } from "../game/WoodUpgrades";
 import { LeftPanel } from "./LeftPanel";
@@ -68,7 +68,7 @@ export class VikingClicker extends Component<{}, VikingClickerState> {
                     unassignFarmhand: this.unassignFarmhand,
                     assignWoodcutter: this.assignWoodcutter,
                     unassignWoodcutter: this.unassignWoodcutter,
-                    areUpgradesAndServantsEnabled: areUpgradesEnabled(this.state.game)
+                    areUpgradesAndServantsEnabled: areUpgradesAndServantsEnabled(this.state.game)
                 }}
             >
                 <Grid container={true} spacing={0}>
