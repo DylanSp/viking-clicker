@@ -9,14 +9,16 @@ export const ServantsPanel: FunctionComponent = () => {
     return (
         <VikingClickerContextConsumer>
             {(context) =>
-                <PanelOverlay overlayImage={farmer} isOverlayHidden={context.areUpgradesAndServantsEnabled}>
-                    <>
-                        <Typography variant="h4">
-                            Servants
-                        </Typography>
-                        <ServantsDisplay />
-                    </>
-                </PanelOverlay>
+                <div data-cy="Servants">
+                    <PanelOverlay overlayImage={farmer} isOverlayHidden={context.areUpgradesAndServantsEnabled}>
+                        <>
+                            <Typography variant="h4">
+                                Servants
+                            </Typography>
+                            <ServantsDisplay />
+                        </>
+                    </PanelOverlay>
+                </div>
             }
         </VikingClickerContextConsumer>
     );
