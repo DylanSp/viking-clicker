@@ -13,7 +13,8 @@ export const Actions: FunctionComponent = () => {
                     style={{
                         justifyContent: "center",
                         margin: "auto",
-                        padding: "12.5vh 0",
+                        paddingTop: "10vh",
+                        paddingBottom: "5vh",
                         width: "fit-content"
                     }}
                 >

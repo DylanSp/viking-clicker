@@ -15,7 +15,7 @@ export const MainPanel: FunctionComponent = () => {
             <div
                 style={{
                     textAlign: "center",
-                    height: "66vh"
+                    height: "60vh"
                 }}
             >
                 <Typography variant="h3" gutterBottom={true}>
@@ -29,7 +29,7 @@ export const MainPanel: FunctionComponent = () => {
             <Grid
                 container={true}
                 style={{
-                    height: "34vh"
+                    height: "40vh"
                 }}
             >
                 <Grid
