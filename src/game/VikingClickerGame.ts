@@ -104,7 +104,7 @@ export const hireServant = (game: VikingClickerGame): [boolean, VikingClickerGam
     const cost = getServantCost(game);
     if (game.resources.food >= cost) {
         return [true, produce(game, (draft) => {
-            game.resources.food -= cost;
+            draft.resources.food -= cost;
             draft.servants.unassigned += 1;
         })];
     }

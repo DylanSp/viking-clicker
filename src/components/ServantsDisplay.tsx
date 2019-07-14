@@ -16,7 +16,11 @@ export const ServantsDisplay: FunctionComponent = () => {
         <VikingClickerContextConsumer>
             {(context: VikingClickerContext) =>
                 <>
-                    <Button variant="outlined" onClick={context.hireServant}>
+                    <Button
+                        variant="outlined"
+                        onClick={context.hireServant}
+                        disabled={context.game.resources.food < context.servantCost}
+                    >
                         Hire: {context.servantCost} Food
                     </Button>
                     <Typography variant="h6">
