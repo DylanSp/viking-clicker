@@ -17,7 +17,7 @@ export const foodUpgrades: FoodUpgrade[] = [
         plowPercentageAdded: 1,
         farmhandPercentageAdded: 0,
         cost: {
-            food: 50,
+            food: 25,
             wood: 0,
             gold: 0
         }

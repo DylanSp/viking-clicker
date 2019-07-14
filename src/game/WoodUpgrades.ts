@@ -18,7 +18,7 @@ export const woodUpgrades: WoodUpgrade[] = [
         woodcutterPercentageAdded: 0,
         cost: {
             food: 0,
-            wood: 50,
+            wood: 25,
             gold: 0
         }
     }
