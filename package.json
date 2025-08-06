@@ -12,7 +12,7 @@
     "immer": "^9.0.6",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "react-scripts": "2.1.8",
+    "react-scripts": "5.0.1",
     "react-transition-group": "^2.9.0",
     "typeface-roboto": "0.0.54",
     "typeface-uncial-antiqua": "0.0.71",
